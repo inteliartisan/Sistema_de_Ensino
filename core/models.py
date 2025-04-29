@@ -49,7 +49,7 @@ class Monitor(models.Model):
 class Inscricao(models.Model):
     estudante = models.ForeignKey(Estudante, on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
-    data_inscricao = models.DateField('Data de Inscrição', auto_now_add=True)
+    data_de_inscricao = models.DateField('Data de Inscrição', auto_now_add=True)
 
     def __str__(self):
         return f"{self.estudante} inscrito na disciplina {self.disciplina}"
