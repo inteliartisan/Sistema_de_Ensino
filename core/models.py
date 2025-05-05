@@ -9,12 +9,18 @@ class Disciplina(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class PostoGraduacao(models.Model):
+    posto_graduacao = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.posto_graduacao
 
 class Estudante(models.Model):
     matricula = models.CharField('Matrícula', max_length=50, unique=True)
     primeiro_nome = models.CharField('Primeiro Nome', max_length=50)
     sobrenome = models.CharField('Sobrenome', max_length=50)
-    posto_graduacao = models.CharField('Posto ou Graduação', max_length=50)
+    posto_graduacao = models.ForeignKey(PostoGraduacao, on_delete=models.CASCADE)
     nome_guerra = models.CharField('Nome de Guerra', max_length=50)
     data_de_aniversario = models.DateField('Data de Aniversário')
     email = models.EmailField('E-mail', unique=True)
@@ -26,7 +32,7 @@ class Instrutor(models.Model):
     matricula = models.CharField('Matrícula', max_length=50, unique=True)
     primeiro_nome = models.CharField('Primeiro Nome', max_length=50)
     sobrenome = models.CharField('Último Nome', max_length=50)
-    posto_graduacao = models.CharField('Posto ou Graduação', max_length=50)
+    posto_graduacao = models.ForeignKey(PostoGraduacao, on_delete=models.CASCADE)
     nome_guerra = models.CharField('Nome de Guerra', max_length=50)
     email = models.EmailField('E-mail', unique=True)
     disciplina = models.ForeignKey('Disciplina', on_delete=models.SET_NULL, null=True, blank=True)
@@ -38,7 +44,7 @@ class Monitor(models.Model):
     matricula = models.CharField('Matrícula', max_length=50, unique=True)
     primeiro_nome = models.CharField('Primeiro Nome', max_length=50)
     sobrenome = models.CharField('Último Nome', max_length=50)
-    posto_graduacao = models.CharField('Posto ou Graduação', max_length=50)
+    posto_graduacao = models.ForeignKey(PostoGraduacao, on_delete=models.CASCADE)
     nome_guerra = models.CharField('Nome de Guerra', max_length=50)
     email = models.EmailField('E-mail', unique=True)
     disciplina = models.ForeignKey('Disciplina', on_delete=models.SET_NULL, null=True, blank=True)

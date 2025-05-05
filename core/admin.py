@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from.models import  Disciplina, Estudante, Instrutor, Monitor, Inscricao, Escore, Presenca
+from.models import  PostoGraduacao, Disciplina, Estudante, Instrutor, Monitor, Inscricao, Escore, Presenca
+
+@admin.register(PostoGraduacao)
+class PostoGraduacaoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'posto_graduacao')
+    search_fields = ('posto_graduacao',)
 
 @admin.register(Disciplina)
 class DisciplinaAdmin(admin.ModelAdmin):
@@ -69,4 +74,3 @@ class EscoreAdmin(admin.ModelAdmin):
 class PresencaAdmin(admin.ModelAdmin):
     list_display = ('estudante', 'data', 'status')
     search_fields = ('estudante__primeiro_nome',)
- 
