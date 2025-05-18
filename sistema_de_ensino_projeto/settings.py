@@ -42,6 +42,17 @@ INSTALLED_APPS = [
     'api',
 ]
 
+
+AUTH_USER_MODEL = 'core.UsuarioPersonalizado'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,7 +63,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'sistema_de_ensino_projeto.urls'
+
 
 TEMPLATES = [
     {
@@ -69,6 +82,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'sistema_de_ensino_projeto.wsgi.application'
 
 
@@ -79,7 +93,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sistema_de_ensino',
-        'USER': 'adminuser',
+        'USER': 'admin_user',
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -122,6 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
